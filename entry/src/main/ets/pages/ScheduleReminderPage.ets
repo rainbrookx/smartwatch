@@ -1,6 +1,6 @@
 @Entry
 @Component
-struct ScheduleReminderPage {
+export default struct ScheduleReminderPage {
   @State repeat: string[] = ['一次', '两次', '三次']
 
   build() {

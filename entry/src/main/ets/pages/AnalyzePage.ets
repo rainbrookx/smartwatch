@@ -1,9 +1,6 @@
-
-
-
 @Entry
 @Component
-struct AnalyzePage {
+export default struct AnalyzePage {
   build() {
     Column({ space: 30 }) {
       Image($r('app.media.analyze_page'))
@@ -40,7 +37,7 @@ struct AnalyzePage {
             })
         }
         .margin({ top: 40 })
-      }.position({y: 350}).width('100%')
+      }.position({ y: 350 }).width('100%')
     }
     .width('100%')
     .height('100%')

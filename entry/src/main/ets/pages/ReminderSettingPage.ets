@@ -9,7 +9,7 @@ interface ReminderItem {
 
 @Entry
 @Component
-struct ReminderSettingPage {
+export default struct ReminderSettingPage {
   // 页面标题
   private pageTitle: string = '提醒设置'
   // 提醒项数据列表
@@ -92,7 +92,7 @@ struct ReminderSettingPage {
       .backgroundColor('#F5F5F5')
     }
     .width('100%')
-    .height('100%')
+    .height('90%')  // TODO 很多页面都要设置成90%，不然会被底部 Navigation 遮挡
     .backgroundColor('#F5F5F5')
 
   }

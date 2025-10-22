@@ -1,4 +1,7 @@
 import { ToolbarItem } from '../typing'
+import AnalyzePage from './AnalyzePage'
+import ReminderSettingPage from './ReminderSettingPage'
+import ScheduleReminderPage from './ScheduleReminderPage'
 
 @Entry
 @Component
@@ -47,11 +50,11 @@ struct Index {
     Column() {
       Navigation() {
         if (this.selectedIndex === 1) {
-
+          AnalyzePage()
         } else if (this.selectedIndex === 2) {
-
+          ReminderSettingPage()
         } else if (this.selectedIndex === 3) {
-
+          ScheduleReminderPage()
         } else if (this.selectedIndex === 4) {
 
         } else if (this.selectedIndex === 5) {
