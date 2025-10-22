@@ -1,23 +1,65 @@
+import { ToolbarItem } from '../typing'
+
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  @State selectedIndex: number = 1
+  @State toolbarIcons: ToolbarItem[] = [
+    {
+      index: 1, icon: $r('app.media.toolbar_home'),
+      selectedIcon: $r('app.media.toolbar_home_f')
+    },
+    {
+      index: 2, icon: $r('app.media.toolbar_tongji'),
+      selectedIcon: $r('app.media.toolbar_tongji_f')
+    },
+    {
+      index: 3, icon: $r('app.media.toolbar_add'),
+      selectedIcon: $r('app.media.toolbar_add')
+    },
+    {
+      index: 4, icon: $r('app.media.toolbar_compass'),
+      selectedIcon: $r('app.media.toolbar_compass_f')
+    },
+    {
+      index: 5, icon: $r('app.media.toolbar_person'),
+      selectedIcon: $r('app.media.toolbar_person_f')
+    },
+  ]
+
+  @Builder
+  toolbarConfigurationBuilder() {
+    Row() {
+      ForEach(this.toolbarIcons, (item: ToolbarItem) => {
+        Column() {
+          Image(this.selectedIndex === item.index ? item.selectedIcon : item.icon)
+            .width(24).height(24)
+        }.size({ width: '20%', height: '100%' }).justifyContent(FlexAlign.Center)
+        .onClick(() => {
+          this.selectedIndex = item.index
+        })
+      })
+    }.justifyContent(FlexAlign.SpaceAround).width('100%')
+    .backgroundColor(Color.White)
+  }
 
   build() {
-    RelativeContainer() {
-      Text(this.message)
-        .id('HelloWorld')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
-        .onClick(() => {
-          this.message = 'Welcome';
-        })
+    Column() {
+      Navigation() {
+        if (this.selectedIndex === 1) {
+
+        } else if (this.selectedIndex === 2) {
+
+        } else if (this.selectedIndex === 3) {
+
+        } else if (this.selectedIndex === 4) {
+
+        } else if (this.selectedIndex === 5) {
+
+        }
+      }
+      .toolbarConfiguration(this.toolbarConfigurationBuilder())
     }
-    .height('100%')
-    .width('100%')
+    .height('100%').width('100%')
   }
 }
