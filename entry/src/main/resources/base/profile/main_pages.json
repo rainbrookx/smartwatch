@@ -1,6 +1,7 @@
 {
   "src": [
     "pages/Index",
-    "pages/AnalyzePage"
+    "pages/AnalyzePage",
+    "pages/ScheduleReminderPage"
   ]
 }
