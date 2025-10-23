@@ -1,4 +1,4 @@
-import { getUserInfo, updateSittingTime } from '../http/test3_request'
+import { getUserInfo, updateSittingTime } from '../http/jxy_request'
 import { UserInfo } from '../typing/LeanCloudType'
 
 @Entry
