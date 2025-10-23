@@ -1,4 +1,5 @@
-import http from '@ohos.net.http';
+import http from '@ohos.net.http'
+import router from '@ohos.router'
 
 interface HeartRateData {
   currunt_heart: number;
@@ -80,6 +81,13 @@ struct HeartRateResultPage {
           .fontWeight(FontWeight.Lighter)
           .onClick(() => {
             console.info('关闭心率结果页')
+            // 清空路由栈并跳转到心率页面
+            router.clear()
+            router.pushUrl({
+              url: 'pages/Whw1HeartRatePage'
+            }).catch((err: Error) => {
+              console.error('跳转到心率页面失败：', JSON.stringify(err))
+            })
           })
       }
       .width('100%')
@@ -169,6 +177,13 @@ struct HeartRateResultPage {
           .margin({ bottom: 15 })
           .onClick(() => {
             console.info('确定按钮被点击')
+            // 清空路由栈并跳转到心率页面
+            router.clear()
+            router.pushUrl({
+              url: 'pages/Whw1HeartRatePage'
+            }).catch((err: Error) => {
+              console.error('跳转到心率页面失败：', JSON.stringify(err))
+            })
           })
 
         Button('重新测试')
@@ -182,9 +197,12 @@ struct HeartRateResultPage {
           .margin({ bottom: 40 })
           .onClick(() => {
             console.info('重新测试被点击')
-            this.isLoading = true
-            this.errorMessage = ''
-            this.fetchHeartRate()
+            // 替换当前页面为测试页面，重新开始测试
+            router.replaceUrl({
+              url: 'pages/Yxy3HeartRateTestPage'
+            }).catch((err: Error) => {
+              console.error('跳转到测试页面失败：', JSON.stringify(err))
+            })
           })
       }
       .width('100%')
