@@ -5,7 +5,7 @@ import TodoPage from './Whw2TodoPage'
 
 @Entry
 @Component
-struct IndexAnalyzeTab {
+export default  struct IndexAnalyzeTab {
   @State fontColor: string = '#182431'
   @State selectedFontColor: string = '#007DFF'
   @State currentIndex: number = 0
