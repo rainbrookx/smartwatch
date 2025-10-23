@@ -83,9 +83,9 @@ export default struct MinePage {
           this.getUIContext().getRouter().pushUrl({url: 'pages/Whw4UserSelf'})
         })
 
-        // 第三方接入
+        // 步数设置
         Row() {
-          Text('第三方接入')
+          Text('步数设置')
             .fontSize(16)
             .margin({ left: 15 })
             .flexGrow(1)
@@ -98,6 +98,9 @@ export default struct MinePage {
         .height(45)
         .backgroundColor('#fff')
         .alignItems(VerticalAlign.Center)
+        .onClick(() => {
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Zcy3Homepage'})
+        })
 
         // 语言设置
         Row() {

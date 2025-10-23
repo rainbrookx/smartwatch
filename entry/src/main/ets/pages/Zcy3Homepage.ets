@@ -50,6 +50,15 @@ struct MyHomepage {
 
   build() {
     Column({ space: 0 }) {
+      // 返回
+      Image($r('app.media.return'))
+        .width(26)
+        .height(20)
+        .onClick(() => {
+          this.getUIContext().getRouter().back()
+        })
+        .position({top: 20})
+
       // 头部区域
       Stack() {
         Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -76,6 +85,7 @@ struct MyHomepage {
       }
       .width('100%')
       .height(200)
+      .margin({top: 50})
 
       // 运动目标区域
       Column({ space: 0 }) {
@@ -183,83 +193,6 @@ struct MyHomepage {
         .justifyContent(FlexAlign.SpaceBetween)
         .border({ width: 1, color: '#999', style: BorderStyle.Dashed })
         .align(Alignment.Center);  // 水平居中
-      }
-
-      // 设置项区域
-      Column({ space: 0 }) {
-        // 单位设置
-        Row() {
-          Text('单位设置')
-            .fontSize(16)
-            .fontColor('#333')
-            .margin({ left: 20 });
-          Image($r("app.media.right_black"))
-            .width(10)
-            .height(10)
-            .margin({ right: 20 });
-        }
-        .width('100%')
-        .height(60)
-        .alignItems(VerticalAlign.Center)
-        .justifyContent(FlexAlign.SpaceBetween)
-        .border({ width: { bottom: 1 }, color: '#eee' });
-
-        // 第三方接入
-        Row() {
-          Text('第三方接入')
-            .fontSize(16)
-            .fontColor('#333')
-            .margin({ left: 20 });
-          Image($r("app.media.right_black"))
-            .width(10)
-            .height(10)
-            .margin({ right: 20 });
-        }
-        .width('100%')
-        .height(60)
-        .alignItems(VerticalAlign.Center)
-        .justifyContent(FlexAlign.SpaceBetween)
-        .border({ width: { bottom: 1 }, color: '#eee' });
-
-        // 语言设置
-        Row() {
-          Text('语言设置')
-            .fontSize(16)
-            .fontColor('#333')
-            .margin({ left: 20 });
-          Row() {
-            Text('中文')
-              .fontSize(14)
-              .fontColor('#3B9DFF')
-              .margin({ right: 10 });
-            Image($r("app.media.right_black"))
-              .width(10)
-              .height(10)
-              .margin({ right: 20 });
-          }
-          .alignItems(VerticalAlign.Center)
-        }
-        .width('100%')
-        .height(60)
-        .alignItems(VerticalAlign.Center)
-        .justifyContent(FlexAlign.SpaceBetween)
-        .border({ width: { bottom: 1 }, color: '#eee' });
-
-        // 意见反馈
-        Row() {
-          Text('意见反馈')
-            .fontSize(16)
-            .fontColor('#333')
-            .margin({ left: 20 });
-          Image($r("app.media.right_black"))
-            .width(10)
-            .height(10)
-            .margin({ right: 20 });
-        }
-        .width('100%')
-        .height(60)
-        .alignItems(VerticalAlign.Center)
-        .justifyContent(FlexAlign.SpaceBetween);
       }
     }
     .width('100%')
