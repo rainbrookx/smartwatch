@@ -2,7 +2,7 @@ import http from '@ohos.net.http';
 
 // 定义步数数据接口结构
 interface StepData {
-  today_step: string;
+  today_target: string;
 }
 
 interface ApiResponse {
@@ -92,7 +92,7 @@ struct MyHomepage {
         // 步数显示行
         Row() {
           Row() {
-            Text(this.isLoading ? '加载中...' : (this.stepData?.today_step || '0'))
+            Text(this.isLoading ? '加载中...' : (this.stepData?.today_target || '0'))
               .fontSize(36)
               .fontColor('#333');
             Text('步')
