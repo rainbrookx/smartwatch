@@ -7,10 +7,12 @@
     "pages/Fyx4ReminderSettingPage",
 
     "pages/Lmy1HealthPage",
+    "pages/Lmy2SleepStatistics",
+    "pages/Lmy3AlarmReminder",
 
     "pages/whw1",
-    "pages/WhwHelpPage",
-    "pages/WhwUserSelf",
+    "pages/Whw3HelpPage",
+    "pages/Whw4UserSelf",
 
     "pages/Jxy1MinePage",
     "pages/Jxy2MyInfoPage",
