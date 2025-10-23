@@ -4,6 +4,10 @@
     "pages/AnalyzePage",
     "pages/ScheduleReminderPage",
     "pages/lmy1",
-    "pages/whw1"
+    "pages/whw1",
+    "pages/test1",
+    "pages/test2",
+    "pages/test3",
+    "pages/test4"
   ]
 }
