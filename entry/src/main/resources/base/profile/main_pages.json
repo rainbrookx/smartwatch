@@ -9,6 +9,10 @@
     "pages/test2",
     "pages/test3",
     "pages/test4",
+    "pages/ZcyGoalSetting",
+    "pages/ZcyHomepage",
+    "pages/ZcyInformation",
+    "pages/ZcyIntelligentPlay",
     "pages/HelpPage",
     "pages/UserSelf"
   ]
