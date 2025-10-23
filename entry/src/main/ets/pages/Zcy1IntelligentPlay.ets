@@ -1,4 +1,5 @@
 // import { FlexAlign, ToggleType, HorizontalAlign, FontWeight } from '@ohos.arkui.types';
+import router from '@ohos.router'
 
 @Entry
 @Component
@@ -181,6 +182,16 @@ export default struct IntelligentPlay {
     .width('100%')
     .height(50)
     .padding({ left: 16, right: 16 })
+    .onClick(() => {
+      // 点击闹钟提醒跳转到闹钟提醒页面
+      if (text === "闹钟提醒") {
+        router.pushUrl({
+          url: 'pages/Lmy3AlarmReminder'
+        }).catch((err: Error) => {
+          console.error('跳转到闹钟提醒页面失败：', JSON.stringify(err))
+        })
+      }
+    })
   }
 
   @Builder

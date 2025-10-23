@@ -1,3 +1,5 @@
+import router from '@ohos.router'
+
 interface AlarmItem {
   id: number;
   time: string;
@@ -19,13 +21,19 @@ struct AlarmReminder {
       // 顶部导航栏
       Row() {
         // 返回按钮
-        Image($r('sys.symbol.chevron_left'))
-          .width(24)
-          .height(24)
-          .fillColor('#333333')
-          .onClick(() => {
-            // 返回上一页
-          })
+        Row() {
+          Image($r('app.media.return'))
+            .width(20)
+            .height(20)
+            .objectFit(ImageFit.Contain)
+        }
+        .width(40)
+        .height(40)
+        .justifyContent(FlexAlign.Center)
+        .onClick(() => {
+          // 返回到智能播放页面
+          router.back()
+        })
 
         // 标题
         Text('闹钟提醒')
@@ -39,8 +47,14 @@ struct AlarmReminder {
         Text('新增')
           .fontSize(16)
           .fontColor('#5B9EFF')
+          .width(40)
           .onClick(() => {
-            // 新增闹钟
+            // 跳转到新增闹钟页面
+            router.pushUrl({
+              url: 'pages/Lmy4AlarmDetails'
+            }).catch((err: Error) => {
+              console.error('跳转到闹钟详情页面失败：', JSON.stringify(err))
+            })
           })
       }
       .width('100%')

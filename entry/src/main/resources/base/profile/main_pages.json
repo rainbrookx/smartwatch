@@ -8,6 +8,7 @@
     "pages/Lmy1HealthPage",
     "pages/Lmy2SleepStatistics",
     "pages/Lmy3AlarmReminder",
+    "pages/Lmy4AlarmDetails",
     "pages/Whw1HeartRatePage",
     "pages/Whw2TodoPage",
     "pages/Whw3HelpPage",
