@@ -1,8 +1,11 @@
 import { ToolbarItem } from '../typing'
-import AnalyzePage from './FyxAnalyzePage'
-import ReminderSettingPage from './FyxReminderSettingPage'
-import ScheduleReminderPage from './FyxScheduleReminderPage'
-import HealthPage from  './lmy1'
+import HealthPage from './Lmy1HealthPage'
+import AnalyzePage from './Fyx1AnalyzePage'
+
+
+import ReminderSettingPage from './Fyx4ReminderSettingPage'
+import ScheduleReminderPage from './Fyx3ScheduleReminderPage'
+
 
 @Entry
 @Component
@@ -53,7 +56,7 @@ struct Index {
         if (this.selectedIndex === 1) {
           HealthPage()
         } else if (this.selectedIndex === 2) {
-          ReminderSettingPage()
+          AnalyzePage()
         } else if (this.selectedIndex === 3) {
           ScheduleReminderPage()
         } else if (this.selectedIndex === 4) {

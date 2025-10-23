@@ -1,13 +1,12 @@
 {
   "src": [
     "pages/Index",
+    "pages/Fyx1AnalyzePage",
+    "pages/Fyx2StepStatistics",
+    "pages/Fyx3ScheduleReminderPage",
+    "pages/Fyx4ReminderSettingPage",
 
-    "pages/FyxAnalyzePage",
-    "pages/FyxReminderSettingPage",
-    "pages/FyxScheduleReminderPage",
-    "pages/FyxStepStatistics",
-
-    "pages/lmy1",
+    "pages/Lmy1HealthPage",
 
     "pages/whw1",
     "pages/WhwHelpPage",
@@ -23,9 +22,9 @@
     "pages/Yxy3HeartRateTestPage",
     "pages/Yxy4HeartRateResultPage",
 
-    "pages/ZcyGoalSetting",
-    "pages/ZcyHomepage",
-    "pages/ZcyInformation",
-    "pages/ZcyIntelligentPlay"
+    "pages/Zcy1IntelligentPlay",
+    "pages/Zcy2Information",
+    "pages/Zcy3Homepage",
+    "pages/Zcy4GoalSetting"
   ]
 }
