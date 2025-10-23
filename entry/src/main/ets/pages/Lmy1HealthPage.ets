@@ -139,18 +139,38 @@ export default  struct HealthPage {
       } else if (this.healthData) {
         // 顶部状态栏
         Row() {
-          Text(`⌚ ${this.healthData.devicce.name}`)
-            .fontSize(14)
-            .fontWeight(500)
+          Row({ space: 4 }) {
+            Text('设备')
+              .fontSize(12)
+              .fontColor('#999999')
+            Text(this.healthData.devicce.name)
+              .fontSize(14)
+              .fontWeight(500)
+              .fontColor('#333333')
+          }
 
-          Text(`🔋 ${this.healthData.devicce.battery}%`)
-            .fontSize(14)
-            .margin({ left: 10 })
+          Row({ space: 4 }) {
+            Text('电量')
+              .fontSize(12)
+              .fontColor('#999999')
+            Text(`${this.healthData.devicce.battery}%`)
+              .fontSize(14)
+              .fontColor('#52C41A')
+              .fontWeight(500)
+          }
+          .margin({ left: 15 })
 
           Blank()
 
-          Text(`☀️ ${this.healthData.temperature}°C ${this.healthData.weather}`)
-            .fontSize(14)
+          Row({ space: 4 }) {
+            Text(`${this.healthData.temperature}°C`)
+              .fontSize(14)
+              .fontColor('#FF8C00')
+              .fontWeight(500)
+            Text(this.healthData.weather)
+              .fontSize(14)
+              .fontColor('#333333')
+          }
         }
         .width('100%')
         .padding({ left: 16, right: 16, top: 10, bottom: 10 })
