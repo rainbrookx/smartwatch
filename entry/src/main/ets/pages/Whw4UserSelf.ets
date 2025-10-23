@@ -71,7 +71,8 @@ struct ProfilePage {
           .alignItems(VerticalAlign.Center)
         }
         .onClick(() => {
-          console.info('点击了头像');
+          console.info('点击了头像，跳转到我的信息页面');
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Jxy2MyInfoPage'})
         })
 
         // 第2行：性别
@@ -79,7 +80,8 @@ struct ProfilePage {
           InfoRow({ label: '性别', value: '男' })
         }
         .onClick(() => {
-          console.info('点击了性别');
+          console.info('点击了性别，跳转到我的信息页面');
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Jxy2MyInfoPage'})
         })
 
         // 第3行：生日
@@ -87,7 +89,8 @@ struct ProfilePage {
           InfoRow({ label: '生日', value: '1991年4月20日' })
         }
         .onClick(() => {
-          console.info('点击了生日');
+          console.info('点击了生日，跳转到我的信息页面');
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Jxy2MyInfoPage'})
         })
 
         // 第4行：身高

@@ -1,4 +1,5 @@
-// 导入必要的枚举类型（根据IDE提示补充，通常无需手动导入）
+import router from '@ohos.router'
+
 @Entry
 @Component
 struct MyInfoPage {
@@ -10,17 +11,46 @@ struct MyInfoPage {
 
   build() {
     Column({ space: 20 }) {
-      // 标题区域
-      Column({ space: 5 }) {
+      // 顶部导航栏
+      Row() {
+        // 返回按钮
+        Row() {
+          Image($r('app.media.return'))
+            .width(20)
+            .height(20)
+            .objectFit(ImageFit.Contain)
+        }
+        .width(40)
+        .height(40)
+        .justifyContent(FlexAlign.Center)
+        .onClick(() => {
+          router.back()
+        })
+
+        Blank()
+
         Text('我的信息')
           .fontSize(24)
           .fontWeight(FontWeight.Bold)
-        Text('精确的信息可以获取更准确的数据分析')
-          .fontSize(12)
-          .fontColor('#999')
+
+        Blank()
+
+        // 右侧占位，保持标题居中
+        Text('')
+          .width(40)
       }
       .width('100%')
-      .padding({ top: 30, left: 20, right: 20 })
+      .height(56)
+      .padding({ left: 10, right: 10 })
+      .alignItems(VerticalAlign.Center)
+      
+      // 说明文字
+      Text('精确的信息可以获取更准确的数据分析')
+        .fontSize(12)
+        .fontColor('#999')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .margin({ top: -10 })
 
       // 昵称输入
       Column({ space: 5 }) {
@@ -115,8 +145,8 @@ struct MyInfoPage {
       }
       .width('90%')
 
-      // 下一步按钮
-      Button('下一步')
+      // 保存按钮
+      Button('保存')
         .width('90%')
         .height(45)
         .backgroundColor('#007AFF')
@@ -124,8 +154,9 @@ struct MyInfoPage {
         .borderRadius(8)
         .margin({ top: 40, bottom: 30 })
         .onClick(() => {
-          // 点击下一步的逻辑
-          console.info(`提交信息：昵称=${this.nickname}，性别=${this.gender || '未选择'}，生日=${this.birthYear}-${this.birthMonth}-${this.birthDay}`)
+          // 保存并返回
+          console.info(`保存信息：昵称=${this.nickname}，性别=${this.gender || '未选择'}，生日=${this.birthYear}-${this.birthMonth}-${this.birthDay}`)
+          router.back()
         })
     }
     .width('100%')
