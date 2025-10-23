@@ -19,7 +19,7 @@ interface StepResponse {
 
 @Entry
 @Component
-struct StepStatistics {
+export default struct StepStatistics {
   @State selectedTab: number = 1; // 0: 日, 1: 周, 2: 月
   @State stepData: StepData[] = [];
   @State totalSteps: number = 0;

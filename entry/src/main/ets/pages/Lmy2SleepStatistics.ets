@@ -18,7 +18,7 @@ interface SleepResponse {
 
 @Entry
 @Component
-struct SleepStatistics {
+export default struct SleepStatistics {
   @State selectedTab: number = 1; // 0: 日, 1: 周, 2: 月
   @State sleepData: SleepData[] = [];
   @State totalHours: number = 0;
