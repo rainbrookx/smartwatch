@@ -1,6 +1,8 @@
 import { ToolbarItem } from '../typing'
 import HealthPage from './Lmy1HealthPage'
 import AnalyzePage from './Fyx1AnalyzePage'
+import IntelligentPlayPage from './Zcy1IntelligentPlay'
+import MinePage from  './Jxy1MinePage'
 
 
 import ReminderSettingPage from './Fyx4ReminderSettingPage'
@@ -58,11 +60,11 @@ struct Index {
         } else if (this.selectedIndex === 2) {
           AnalyzePage()
         } else if (this.selectedIndex === 3) {
-          ScheduleReminderPage()
+
         } else if (this.selectedIndex === 4) {
-
+          IntelligentPlayPage()
         } else if (this.selectedIndex === 5) {
-
+          MinePage()
         }
       }
       .toolbarConfiguration(this.toolbarConfigurationBuilder())

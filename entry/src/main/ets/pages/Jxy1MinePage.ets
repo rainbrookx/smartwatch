@@ -1,7 +1,7 @@
 
 @Entry
 @Component
-struct MinePage {
+export default struct MinePage {
   build() {
     Column({ space: 0 }) {
       // 顶部标题

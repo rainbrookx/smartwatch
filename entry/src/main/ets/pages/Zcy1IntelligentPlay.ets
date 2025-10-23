@@ -2,7 +2,7 @@
 
 @Entry
 @Component
-struct IntelligentPlay {
+export default struct IntelligentPlay {
   // 状态变量管理开关状态
   @State isCallRemindOn: boolean = true; // 来电提醒默认打开
   @State isMessageRemindOn: boolean = false; // 短信提醒默认关闭
