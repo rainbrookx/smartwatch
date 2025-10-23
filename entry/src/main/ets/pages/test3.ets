@@ -1,3 +1,6 @@
+import { getUserInfo } from '../http/test3_request'
+import { UserInfo } from '../typing/LeanCloudType'
+
 @Entry
 @Component
 struct SitReminderPage {
@@ -5,16 +8,23 @@ struct SitReminderPage {
   @State selectedTime: number = 30
   private timeOptions: string[] = []
 
-  aboutToAppear() {
+  async aboutToAppear() {
     for (let i = 0; i < 23; i++) {
       const time = 10 + i * 5
       this.timeOptions.push(`${time}分钟`)
     }
+
+    let rs = await getUserInfo()
+    let user: UserInfo = JSON.parse(rs)
+    this.selectedTime = user.sittingTime
+    console.log(this.selectedTime.toString())
   }
 
   getDefaultIndex(): number {
-    return this.timeOptions.findIndex(item => item === '30分钟')
+    // return this.timeOptions.findIndex(item => item === '30分钟')
+    return this.timeOptions.findIndex(item => item === `${this.selectedTime}分钟`)
   }
+
 
   build() {
     Column() {

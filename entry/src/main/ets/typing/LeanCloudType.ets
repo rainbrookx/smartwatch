@@ -56,12 +56,12 @@ export interface StepCount {
 
 export interface UserInfo {
   objectId: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
   /**
    * 生日：年月日-有效数字，时分秒-均为0
    */
-  birthday: Date
+  birthday: string
   /**
    * 性别，直接用中文：男、女
    */
@@ -74,4 +74,8 @@ export interface UserInfo {
    * 目标步数
    */
   target: number
+  /**
+   * 坐着的时长
+   */
+  sittingTime: number
 }

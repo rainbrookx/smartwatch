@@ -1,4 +1,5 @@
 export * from './LeanCloudType'
+export * from './HttpType'
 
 /**
  * 底部导航栏图标
