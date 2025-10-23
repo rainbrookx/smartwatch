@@ -13,7 +13,6 @@ interface ReminderItem {
 @Component
 export default struct ReminderSettingPage {
   // 页面标题
-  private pageTitle: string = '提醒设置'
   // 提醒项数据列表
   @State reminderList: ReminderItem[] = [
     {
@@ -103,13 +102,22 @@ export default struct ReminderSettingPage {
   @Builder
   buildTitleBar() {
     Row() {
-      Text(this.pageTitle)
+      Image($r('app.media.return'))
+        .width(26)
+        .height(20)
+        .onClick(() => {
+          this.getUIContext().getRouter().back()
+        })
+
+      Text('提醒设置')
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
+
+      Row()
     }
     .width('100%')
     .height(56)
-    .justifyContent(FlexAlign.Center)
+    .justifyContent(FlexAlign.SpaceBetween)
     .backgroundColor('#FFFFFF')
     .shadow({ radius: 2, color: '#00000010' })
   }
