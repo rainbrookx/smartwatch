@@ -34,6 +34,7 @@ export default struct WatchPairingPage {
           .fontSize(12)
           .fontColor('#999999')
           .lineHeight(22)
+          
           .margin({ bottom: 10 })
 
         Text('了解更多')
