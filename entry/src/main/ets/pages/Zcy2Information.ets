@@ -8,6 +8,10 @@ struct myInformation {
         Image($r('app.media.return'))
           .width(26)
           .height(20)
+          .onClick(() => {
+            this.getUIContext().getRouter().back()
+          })
+
         Text('我的信息')
           .fontSize(24)
           .fontWeight(FontWeight.Bold)
@@ -77,6 +81,9 @@ struct myInformation {
         .borderRadius(8)
         .margin({ top: 12, bottom: 30 })
         .alignSelf(ItemAlign.Center)
+        .onClick(() => {
+          this.getUIContext().getRouter().back()
+        })
     }
     .width('100%')
     .height('100%')

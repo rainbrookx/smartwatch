@@ -95,7 +95,7 @@ struct ProfilePage {
           InfoRow({ label: '身高', value: '180cm' })
         }
         .onClick(() => {
-          console.info('点击了身高');
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Zcy2Information'})
         })
 
         // 第5行：体重
@@ -103,7 +103,7 @@ struct ProfilePage {
           InfoRow({ label: '体重', value: '75kg' })
         }
         .onClick(() => {
-          console.info('点击了体重');
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Zcy2Information'})
         })
 
       } // <-- List 的内容 } 在这里结束
