@@ -1,6 +1,7 @@
 import { ToolbarItem } from '../typing'
 import HealthPage from './Lmy1HealthPage'
 import AnalyzePage from './Fyx1AnalyzePage'
+import WatchPairingPage from  './Yxy1WatchPairingPage'
 import IntelligentPlayPage from './Zcy1IntelligentPlay'
 import MinePage from  './Jxy1MinePage'
 
@@ -60,7 +61,7 @@ struct Index {
         } else if (this.selectedIndex === 2) {
           AnalyzePage()
         } else if (this.selectedIndex === 3) {
-
+          WatchPairingPage()
         } else if (this.selectedIndex === 4) {
           IntelligentPlayPage()
         } else if (this.selectedIndex === 5) {

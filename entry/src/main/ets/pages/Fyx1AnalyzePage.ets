@@ -27,7 +27,7 @@ export default struct AnalyzePage {
             .fontColor(Color.White)
             .borderRadius(8)
             .onClick(() => {
-              console.info('开始链接设备')
+              this.getUIContext().getRouter().pushUrl({ url: 'pages/Yxy1WatchPairingPage' }).catch()
             })
           Text('了解GlGo支持的设备')
             .fontSize(14)

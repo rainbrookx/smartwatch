@@ -139,6 +139,7 @@ struct DeviceSelectionPage {
           .margin({ bottom: 20 })
           .onClick(() => {
             console.info('暂不绑定被点击')
+            this.getUIContext().getRouter().replaceUrl({url: 'pages/Index'}).catch()
           })
 
         Button('绑定')
@@ -151,6 +152,7 @@ struct DeviceSelectionPage {
           .margin({ bottom: 20 })
           .onClick(() => {
             console.info('绑定设备：' + this.selectedDevice)
+            this.getUIContext().getRouter().replaceUrl({url: 'pages/Index'}).catch()
           })
 
 

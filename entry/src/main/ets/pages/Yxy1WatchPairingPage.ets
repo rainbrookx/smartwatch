@@ -1,6 +1,6 @@
 @Entry
 @Component
-struct WatchPairingPage {
+export default struct WatchPairingPage {
   build() {
     Column() {
       Column() {
@@ -61,7 +61,7 @@ struct WatchPairingPage {
         .margin({ bottom: 40 })
         .onClick(() => {
           // 处理绑定设备的点击事件
-          console.info('绑定设备被点击')
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Yxy2DeviceSelectionPage'}).catch()
         })
     }
     .width('100%')
