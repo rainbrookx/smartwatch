@@ -1,8 +1,8 @@
 import { HerderType } from '../typing'
 
-const appId = "whkhvpIFnL17y93QUN8vtr8X-gzGzoHsz"
-const appKey = "o2Hf1iAV3fzoQdZPq76B0k9I"
-const masterKey = "fKgJrldI3qQDCP6mX5RcGxDT"
+const appId = "Lk7Ea17CoVWpjbDiMn2Ajc0t-gzGzoHsz"
+const appKey = "CzmXtXqi8Zf3pSLFPPaUGqd0"
+const masterKey = "VDfOAfC5exDYv5PUJWJTBKzS"
 const contentType = "application/json"
 
 export const AppKeyHerder: HerderType = {

@@ -2,7 +2,7 @@
 import { http } from '@kit.NetworkKit';
 import { HerderType } from './../typing'
 
-const base_url = "https://whkhvpif.lc-cn-n1-shared.com";
+const base_url = "https://lk7ea17c.lc-cn-n1-shared.com";
 
 
 function request(url: string, method: http.RequestMethod, params?: string,
