@@ -1,21 +1,31 @@
 {
   "src": [
     "pages/Index",
+
     "pages/FyxAnalyzePage",
     "pages/FyxReminderSettingPage",
     "pages/FyxScheduleReminderPage",
     "pages/FyxStepStatistics",
+
     "pages/lmy1",
+
     "pages/whw1",
+    "pages/WhwHelpPage",
+    "pages/WhwUserSelf",
+
     "pages/Jxy1MinePage",
     "pages/Jxy2MyInfoPage",
     "pages/Jxy3SitReminderPage",
     "pages/Jxy4WaterReminderPage",
+
+    "pages/Yxy1WatchPairingPage",
+    "pages/Yxy2DeviceSelectionPage",
+    "pages/Yxy3HeartRateTestPage",
+    "pages/Yxy4HeartRateResultPage",
+
     "pages/ZcyGoalSetting",
     "pages/ZcyHomepage",
     "pages/ZcyInformation",
-    "pages/ZcyIntelligentPlay",
-    "pages/WhwHelpPage",
-    "pages/WhwUserSelf"
+    "pages/ZcyIntelligentPlay"
   ]
 }
