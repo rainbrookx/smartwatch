@@ -66,6 +66,10 @@ struct GoalSetting {
           .width(28)
           .height(20)
           .margin({ left: 16 })
+          .onClick(() => {
+            this.getUIContext().getRouter().back()
+          })
+
         Text('设置目标')
           .fontSize(20)
           .fontWeight(FontWeight.Bold)

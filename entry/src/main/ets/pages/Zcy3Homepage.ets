@@ -121,7 +121,11 @@ struct MyHomepage {
         .padding({ bottom: 15, left: 20 })
         .alignItems(VerticalAlign.Center)
         .justifyContent(FlexAlign.SpaceBetween)
-        .border({ width: { bottom: 1 }, color: '#eee' });
+        .border({ width: { bottom: 1 }, color: '#eee' })
+        .onClick(() => {
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Zcy4GoalSetting'})
+        })
+
       }
 
       // 我的设备区域
