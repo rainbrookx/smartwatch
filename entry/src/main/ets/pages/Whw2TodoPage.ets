@@ -276,6 +276,13 @@ export default struct SportDataPage {
       .padding({ left: 20, right: 20, top: 30 })
 
       Blank()
+
+      Text('新增').onClick((event: ClickEvent) => {
+        this.getUIContext().getRouter().pushUrl({url: 'pages/Fyx3ScheduleReminderPage'})
+      }).padding(8)
+        .border({color: '#4DA6FF', width: 1, style: BorderStyle.Solid}).borderRadius(5)
+        .fontColor('#4DA6FF')
+        .position({top: 100, right: 30})
     }
     .width('100%')
     .height('100%')
