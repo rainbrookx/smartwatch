@@ -13,7 +13,7 @@
     "pages/ZcyHomepage",
     "pages/ZcyInformation",
     "pages/ZcyIntelligentPlay",
-    "pages/HelpPage",
-    "pages/UserSelf"
+    "pages/WhwHelpPage",
+    "pages/WhwUserSelf"
   ]
 }
