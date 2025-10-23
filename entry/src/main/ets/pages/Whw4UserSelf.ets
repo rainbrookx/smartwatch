@@ -7,11 +7,20 @@ struct ProfilePage {
       // 1. 顶部导航栏 (App Bar)
       Row() {
         // ... (导航栏代码是正确的，保持不变) ...
-        Text('保存')
-          .fontSize(16)
-          .fontColor(Color.White)
-          .visibility(Visibility.Hidden)
-          .padding({ left: 15 })
+        // 返回按钮
+        Row() {
+          Image($r('app.media.return'))
+            .width(20)
+            .height(20)
+            .objectFit(ImageFit.Contain)
+        }
+        .width(40)
+        .height(40)
+        .justifyContent(FlexAlign.Center)
+        .onClick(() => {
+          // 返回到智能播放页面
+          this.getUIContext().getRouter().back()
+        })
 
         Text('个人信息')
           .fontSize(18)
@@ -23,6 +32,7 @@ struct ProfilePage {
           .padding({ right: 15 })
           .onClick(() => {
             console.info('点击了保存');
+            this.getUIContext().getRouter().back()
           })
       }
       .width('100%')
@@ -85,7 +95,7 @@ struct ProfilePage {
           InfoRow({ label: '身高', value: '180cm' })
         }
         .onClick(() => {
-          console.info('点击了身高');
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Zcy2Information'})
         })
 
         // 第5行：体重
@@ -93,7 +103,7 @@ struct ProfilePage {
           InfoRow({ label: '体重', value: '75kg' })
         }
         .onClick(() => {
-          console.info('点击了体重');
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Zcy2Information'})
         })
 
       } // <-- List 的内容 } 在这里结束
