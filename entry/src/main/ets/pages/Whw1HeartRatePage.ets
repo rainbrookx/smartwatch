@@ -1,4 +1,5 @@
 import http from '@ohos.net.http'
+import router from '@ohos.router'
 
 // 自定义折线图组件
 @Component
@@ -361,7 +362,12 @@ struct HeartRatePage {
           .borderRadius(20)
           .padding({ left: 20, right: 20, top: 8, bottom: 8 })
           .onClick(() => {
-            this.currentHeartRate = Math.floor(Math.random() * 40) + 60
+            // 跳转到心率测试页面
+            router.pushUrl({
+              url: 'pages/Yxy3HeartRateTestPage'
+            }).catch((err: Error) => {
+              console.error('页面跳转失败：', JSON.stringify(err))
+            })
           })
       }
       .width('90%')

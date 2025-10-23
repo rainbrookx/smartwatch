@@ -1,3 +1,5 @@
+import router from '@ohos.router'
+
 @Entry
 @Component
 struct HeartRateTestPage {
@@ -13,6 +15,7 @@ struct HeartRateTestPage {
   private timer2: number = -1
   private timer3: number = -1
   private heartTimer: number = -1
+  private jumpTimer: number = -1 // 页面跳转定时器
   
   aboutToAppear() {
     this.startCircleAnimation1()
@@ -26,6 +29,15 @@ struct HeartRateTestPage {
     }, 1000)
     
     this.startHeartBeatAnimation()
+    
+    // 4.5秒后自动跳转到心率结果页面
+    this.jumpTimer = setTimeout(() => {
+      router.pushUrl({
+        url: 'pages/Yxy4HeartRateResultPage'
+      }).catch((err: Error) => {
+        console.error('页面跳转失败：', JSON.stringify(err))
+      })
+    }, 4500)
   }
   
   aboutToDisappear() {
@@ -33,6 +45,7 @@ struct HeartRateTestPage {
     clearInterval(this.timer2)
     clearInterval(this.timer3)
     clearInterval(this.heartTimer)
+    clearTimeout(this.jumpTimer) // 清理页面跳转定时器
   }
   
   startCircleAnimation1() {
@@ -190,7 +203,8 @@ struct HeartRateTestPage {
         .margin({ bottom: 40 })
         .onClick(() => {
           console.info('取消心率测试')
-          // 这里可以添加取消逻辑
+          // 返回上一页
+          router.back()
         })
     }
     .width('100%')
