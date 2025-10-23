@@ -4,6 +4,7 @@
     "pages/FyxAnalyzePage",
     "pages/FyxReminderSettingPage",
     "pages/FyxScheduleReminderPage",
+    "pages/FyxStepStatistics",
     "pages/lmy1",
     "pages/whw1",
     "pages/Jxy1MinePage",
