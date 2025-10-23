@@ -13,10 +13,23 @@ export default struct StepStatistics {
       show: false,
     },
     xAxis: {
-      data: []
+      data: [],
+      axisLabel: {
+        // x轴文本标签样式
+        fontSize: 30,
+        overflow: 'truncate',
+      },
     },
     yAxis: {
-      name: ''
+      axisLabel: {
+        fontSize: 30,
+        overflow: 'truncate',
+        // x轴文本标签样式
+        formatter: (name: string,
+          index: number) => { // 自定义文本标签
+          return (parseInt(name) / 100).toFixed() + 'k'
+        }
+      }
     },
     series: [
       {
