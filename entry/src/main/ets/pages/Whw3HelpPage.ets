@@ -19,15 +19,32 @@ struct HelpPage {
     Column() {
       // 1. 顶部导航栏 (App Bar)
       Row() {
+        // 返回按钮
+        Row() {
+          Image($r('app.media.return'))
+            .width(20)
+            .height(20)
+            .objectFit(ImageFit.Contain)
+        }
+        .width(40)
+        .height(40)
+        .justifyContent(FlexAlign.Center)
+        .onClick(() => {
+          // 返回到智能播放页面
+          this.getUIContext().getRouter().back()
+        })
+
         // 根据您的要求，不添加返回箭头
         Text('帮助')
           .fontSize(18)
           .fontWeight(FontWeight.Bold)
+
+        Row()
       }
       .width('100%')
       .height(56) // 导航栏标准高度
       .backgroundColor(Color.White)
-      .justifyContent(FlexAlign.Center) // 标题居中
+      .justifyContent(FlexAlign.SpaceBetween) // 标题居中
       .alignItems(VerticalAlign.Center)
 
       // 2. 顶部图标网格

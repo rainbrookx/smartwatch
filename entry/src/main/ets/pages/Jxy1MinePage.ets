@@ -1,3 +1,4 @@
+import { thirdPaymentService } from "@kit.PaymentKit"
 
 @Entry
 @Component
@@ -63,9 +64,9 @@ export default struct MinePage {
 
       // 功能列表（箭头严格靠右）
       Column({ space: 1 }) {
-        // 单位设置
+        // 个人信息
         Row() {
-          Text('单位设置')
+          Text('个人信息')
             .fontSize(16)
             .margin({ left: 15 })
             .flexGrow(1)
@@ -78,6 +79,9 @@ export default struct MinePage {
         .height(45)
         .backgroundColor('#fff')
         .alignItems(VerticalAlign.Center)
+        .onClick(() => {
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Whw4UserSelf'})
+        })
 
         // 第三方接入
         Row() {
@@ -117,9 +121,9 @@ export default struct MinePage {
         .backgroundColor('#fff')
         .alignItems(VerticalAlign.Center)
 
-        // 意见反馈
+        // 帮助
         Row() {
-          Text('意见反馈')
+          Text('帮助')
             .fontSize(16)
             .margin({ left: 15 })
             .flexGrow(1)
@@ -132,6 +136,9 @@ export default struct MinePage {
         .height(45)
         .backgroundColor('#fff')
         .alignItems(VerticalAlign.Center)
+        .onClick(() => {
+          this.getUIContext().getRouter().pushUrl({url: 'pages/Whw3HelpPage'})
+        })
 
         // APP版本
         Row() {
