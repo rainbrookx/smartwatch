@@ -1,11 +1,11 @@
 import StepStatisticsPage from './Fyx2StepStatistics'
 import SleepStatisticsPage from './Lmy2SleepStatistics'
-// import HeartRatePage from './Whw1HeartRatePage'
-// import TodoPage from './Whw2TodoPage'
+import HeartRatePage from './Whw1HeartRatePage'
+import TodoPage from './Whw2TodoPage'
 
 @Entry
 @Component
-struct IndexAnalyzeTab {
+export default  struct IndexAnalyzeTab {
   @State fontColor: string = '#182431'
   @State selectedFontColor: string = '#007DFF'
   @State currentIndex: number = 0
@@ -40,11 +40,11 @@ struct IndexAnalyzeTab {
         }.tabBar(this.tabBuilder(1, '睡眠'))
 
         TabContent() {
-          // HeartRatePage()
+          HeartRatePage()
         }.tabBar(this.tabBuilder(2, '心率'))
 
         TabContent() {
-          // TodoPage()
+          TodoPage()
         }.tabBar(this.tabBuilder(3, '日程'))
       }
       .vertical(false)

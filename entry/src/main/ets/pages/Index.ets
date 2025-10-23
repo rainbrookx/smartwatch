@@ -1,14 +1,9 @@
 import { ToolbarItem } from '../typing'
 import HealthPage from './Lmy1HealthPage'
-import AnalyzePage from './Fyx1AnalyzePage'
-import WatchPairingPage from  './Yxy1WatchPairingPage'
+import IndexAnalyzeTab from './IndexAnalyzeTab'
+import Fyx1AnalyzePage from './Fyx1AnalyzePage'
 import IntelligentPlayPage from './Zcy1IntelligentPlay'
 import MinePage from  './Jxy1MinePage'
-
-
-import ReminderSettingPage from './Fyx4ReminderSettingPage'
-import ScheduleReminderPage from './Fyx3ScheduleReminderPage'
-
 
 @Entry
 @Component
@@ -59,9 +54,9 @@ struct Index {
         if (this.selectedIndex === 1) {
           HealthPage()
         } else if (this.selectedIndex === 2) {
-          AnalyzePage()
+          IndexAnalyzeTab()
         } else if (this.selectedIndex === 3) {
-          WatchPairingPage()
+          Fyx1AnalyzePage()
         } else if (this.selectedIndex === 4) {
           IntelligentPlayPage()
         } else if (this.selectedIndex === 5) {
