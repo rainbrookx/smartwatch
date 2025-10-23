@@ -65,7 +65,6 @@ export default  struct IndexAnalyzeTab {
       })
       .width(360)
       .height('90%')
-      .margin({ top: 52 })
       .backgroundColor('#F1F3F5')
     }.width('100%')
   }

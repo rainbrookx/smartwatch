@@ -86,6 +86,9 @@ export default struct IntelligentPlay {
             .margin({ left: 16, top: 15, bottom: 10 })
             .textAlign(TextAlign.Center)
             .width('100%')
+            .onClick(() => {
+              this.getUIContext().getRouter().pushUrl({url: 'pages/Fyx4ReminderSettingPage'})
+            })
         }
         .width('100%')
         .backgroundColor('#FFFFFF')

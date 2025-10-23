@@ -50,6 +50,9 @@ export default struct ScheduleReminderPage {
         .fontSize(16)
         .fontColor(Color.Blue)
         .position({ right: 10, top: 10 })
+        .onClick(() => {
+          this.getUIContext().getRouter().back()
+        })
     }
     .width('100%')
     .height('100%')
