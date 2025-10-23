@@ -1,7 +1,7 @@
 import { ToolbarItem } from '../typing'
-import AnalyzePage from './AnalyzePage'
-import ReminderSettingPage from './ReminderSettingPage'
-import ScheduleReminderPage from './ScheduleReminderPage'
+import AnalyzePage from './FyxAnalyzePage'
+import ReminderSettingPage from './FyxReminderSettingPage'
+import ScheduleReminderPage from './FyxScheduleReminderPage'
 import HealthPage from  './lmy1'
 
 @Entry
