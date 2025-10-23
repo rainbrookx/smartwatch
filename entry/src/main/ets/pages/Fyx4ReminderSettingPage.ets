@@ -1,4 +1,4 @@
-import router from '@ohos.router'
+// import router from '@ohos.router'
 
 // 定义提醒项数据结构
 interface ReminderItem {
@@ -192,11 +192,12 @@ export default struct ReminderSettingPage {
     }
     
     if (targetUrl) {
-      router.pushUrl({
-        url: targetUrl
-      }).catch((err: Error) => {
-        console.error(`跳转到${name}页面失败：`, JSON.stringify(err))
-      })
+      this.getUIContext().getRouter().pushUrl({url: targetUrl})
+      // router.pushUrl({
+      //   url: targetUrl
+      // }).catch((err: Error) => {
+      //   console.error(`跳转到${name}页面失败：`, JSON.stringify(err))
+      // })
     }
   }
 
