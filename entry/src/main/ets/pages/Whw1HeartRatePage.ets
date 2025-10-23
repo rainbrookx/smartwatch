@@ -182,7 +182,7 @@ interface ApiResponse {
 
 @Entry
 @Component
-struct HeartRatePage {
+export default struct HeartRatePage {
   @State currentTab: number = 0 // 0:日, 1:周, 2:月
   @State currentHeartRate: number = 86
   @State maxHeartRate: number = 98

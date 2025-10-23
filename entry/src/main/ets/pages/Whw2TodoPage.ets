@@ -75,7 +75,7 @@ struct McBarChart {
 
 @Entry
 @Component
-struct SportDataPage {
+export default struct SportDataPage {
   @State currentTab: number = 0 // 0: 日, 1: 周, 2: 月
   @State todayScore: number = 18
   @State timeRemaining: string = '2h00m'
