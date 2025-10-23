@@ -1,4 +1,4 @@
-import { getUserInfo } from '../http/test3_request'
+import { getUserInfo, updateSittingTime } from '../http/test3_request'
 import { UserInfo } from '../typing/LeanCloudType'
 
 @Entry
@@ -49,6 +49,7 @@ struct SitReminderPage {
           .textAlign(TextAlign.End) // 文字右对齐
           .onClick(() => {
             console.info(`保存设置：${this.isReminderOn ? '开启' : '关闭'}，${this.selectedTime}分钟`)
+            updateSittingTime(this.selectedTime)
           })
       }
       .width('100%')

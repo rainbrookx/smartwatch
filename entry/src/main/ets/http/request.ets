@@ -54,6 +54,6 @@ export function del(url: string, params?: string, header?: HerderType) {
   return request(url, http.RequestMethod.DELETE, params, header)
 }
 
-export function put(url: string, params?: string) {
-  return request(url, http.RequestMethod.PUT, params)
+export function put(url: string, params?: string, header?: HerderType) {
+  return request(url, http.RequestMethod.PUT, params, header)
 }
