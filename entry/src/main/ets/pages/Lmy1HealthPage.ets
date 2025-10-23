@@ -18,6 +18,7 @@ interface SleepData {
   awakeMinutes: number;
   sleepEfficiency: number;
   sleepQualityRating: string;
+  
   sleepPhases: SleepPhase[];
 }
 
