@@ -1,3 +1,5 @@
+import router from '@ohos.router'
+
 // 定义提醒项数据结构
 interface ReminderItem {
   id: number // 唯一标识
@@ -154,6 +156,40 @@ export default struct ReminderSettingPage {
     .backgroundColor('#FFFFFF')
     .borderRadius(12)
     .padding({ right: 10, left: 10 })
+    .onClick(() => {
+      // 可展开项支持跳转
+      if (item.isExpandable) {
+        this.handleItemClick(item.name)
+      }
+    })
+  }
+
+  // 处理项点击事件
+  handleItemClick(name: string) {
+    let targetUrl = ''
+    
+    switch (name) {
+      case '喝水提醒':
+        targetUrl = 'pages/Jxy4WaterReminderPage'
+        break
+      case '久坐提醒':
+        targetUrl = 'pages/Jxy3SitReminderPage'
+        break
+      case '闹钟提醒':
+        targetUrl = 'pages/Lmy3AlarmReminder'
+        break
+      default:
+        console.info(`点击了：${name}`)
+        return
+    }
+    
+    if (targetUrl) {
+      router.pushUrl({
+        url: targetUrl
+      }).catch((err: Error) => {
+        console.error(`跳转到${name}页面失败：`, JSON.stringify(err))
+      })
+    }
   }
 
   // 根据ID设置图标背景色（可自定义）

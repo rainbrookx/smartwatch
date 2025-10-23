@@ -1,3 +1,5 @@
+import router from '@ohos.router'
+
 @Entry
 @Component
 struct WaterReminderPage {
@@ -15,14 +17,28 @@ struct WaterReminderPage {
     Column() {
       // 顶部标题栏（标题居中，新增在最右侧）
       Row() {
-        // 左侧占位，平衡右侧空间
-        Text('')
-          .flexGrow(1)
+        // 左侧返回按钮
+        Row() {
+          Image($r('app.media.return'))
+            .width(20)
+            .height(20)
+            .objectFit(ImageFit.Contain)
+        }
+        .width(40)
+        .height(40)
+        .justifyContent(FlexAlign.Center)
+        .onClick(() => {
+          router.back()
+        })
+
+        Blank()
 
         // 标题居中
         Text('喝水提醒')
           .fontSize(20)
           .fontWeight(500)
+
+        Blank()
 
         // 右侧"新增"按钮
         Row() {
@@ -30,8 +46,11 @@ struct WaterReminderPage {
             .fontSize(16)
             .fontColor('#007AFF')
         }
-        .flexGrow(1)
+        .width(40)
         .justifyContent(FlexAlign.End)
+        .onClick(() => {
+          console.info('新增喝水提醒')
+        })
       }
       .width('100%')
       .padding({ top: 20, left: 20, right: 20, bottom: 10 })

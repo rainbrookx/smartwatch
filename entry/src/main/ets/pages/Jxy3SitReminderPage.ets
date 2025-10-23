@@ -1,5 +1,6 @@
 import { getUserInfo, updateSittingTime } from '../http/jxy_request'
 import { UserInfo } from '../typing/LeanCloudType'
+import router from '@ohos.router'
 
 @Entry
 @Component
@@ -30,9 +31,19 @@ struct SitReminderPage {
     Column() {
       // 顶部标题栏（精确居中方案）
       Row() {
-        // 左侧占位，与右侧"保存"宽度对称
-        Text('')
-          .width(40) // 与"保存"按钮宽度一致，确保标题居中
+        // 左侧返回按钮
+        Row() {
+          Image($r('app.media.return'))
+            .width(20)
+            .height(20)
+            .objectFit(ImageFit.Contain)
+        }
+        .width(40)
+        .height(40)
+        .justifyContent(FlexAlign.Center)
+        .onClick(() => {
+          router.back()
+        })
 
         // 标题居中
         Text('久坐提醒')
@@ -50,6 +61,7 @@ struct SitReminderPage {
           .onClick(() => {
             console.info(`保存设置：${this.isReminderOn ? '开启' : '关闭'}，${this.selectedTime}分钟`)
             updateSittingTime(this.selectedTime)
+            router.back()
           })
       }
       .width('100%')
