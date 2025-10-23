@@ -1,16 +1,63 @@
 import router from '@ohos.router'
+import http from '@ohos.net.http';
 
 @Entry
 @Component
 struct AddAlarm {
-  @State selectedHour: number = 12;
-  @State selectedMinute: number = 45;
-  @State selectedDays: string[] = ['周一', '周三', '周五', '周六'];
+  @State selectedHour: number = 7;
+  @State selectedMinute: number = 0;
+  @State selectedDays: boolean[] = [false, false, false, false, false, false, false]; // 周一到周日
   
   // 生成小时数组 (0-23)
   private hours: string[] = Array.from<number, string>({ length: 24 }, (_: number, i: number): string => i.toString().padStart(2, '0'));
   // 生成分钟数组 (0-59)
   private minutes: string[] = Array.from<number, string>({ length: 60 }, (_: number, i: number): string => i.toString().padStart(2, '0'));
+  private dayNames: string[] = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+
+  // 获取选中的日期字符串
+  getSelectedDaysString(): string {
+    const selected: string[] = [];
+    this.selectedDays.forEach((isSelected: boolean, index: number) => {
+      if (isSelected) {
+        selected.push(this.dayNames[index]);
+      }
+    });
+    return selected.length > 0 ? selected.join('  ') : '不重复';
+  }
+
+  // 创建闹钟
+  async createAlarm() {
+    const time = `${this.selectedHour.toString().padStart(2, '0')}:${this.selectedMinute.toString().padStart(2, '0')}`;
+    const days = this.getSelectedDaysString();
+
+    let httpRequest = http.createHttp();
+    try {
+      let response = await httpRequest.request(
+        'https://api.leancloud.cn/1.1/classes/alarm',
+        {
+          method: http.RequestMethod.POST,
+          header: {
+            'X-LC-Id': 'Lk7Ea17CoVWpjbDiMn2Ajc0t-gzGzoHsz',
+            'X-LC-Key': 'VDfOAfC5exDYv5PUJWJTBKzS,master',
+            'Content-Type': 'application/json'
+          },
+          extraData: JSON.stringify({
+            time: time,
+            days: days,
+            enabled: true
+          })
+        }
+      );
+
+      if (response.responseCode !== 201 && response.responseCode !== 200) {
+        console.error('创建闹钟失败:', response.result.toString());
+      }
+    } catch (err) {
+      console.error('创建闹钟异常:', JSON.stringify(err));
+    } finally {
+      httpRequest.destroy();
+    }
+  }
 
   build() {
     Column() {
@@ -47,9 +94,14 @@ struct AddAlarm {
           .fontSize(16)
           .fontColor('#5B9EFF')
           .onClick(() => {
-            // 保存闹钟并返回
-            console.info(`保存闹钟: ${this.selectedHour}:${this.selectedMinute}`);
-            router.back()
+            // 先保存数据
+            this.createAlarm();
+            // 延迟 300ms 后返回，确保数据已保存
+            setTimeout(() => {
+              router.replaceUrl({
+                url: 'pages/Lmy3AlarmReminder'
+              });
+            }, 300);
           })
       }
       .width('100%')
@@ -92,7 +144,6 @@ struct AddAlarm {
                 })
                   .onChange((value: string | string[], index: number | number[]) => {
                     this.selectedHour = index as number;
-                    console.info(`选择小时: ${value}`);
                   })
                   .defaultPickerItemHeight(50)
               }
@@ -106,7 +157,6 @@ struct AddAlarm {
                 })
                   .onChange((value: string | string[], index: number | number[]) => {
                     this.selectedMinute = index as number;
-                    console.info(`选择分钟: ${value}`);
                   })
                   .defaultPickerItemHeight(50)
               }
@@ -126,34 +176,45 @@ struct AddAlarm {
             .margin({ left: '5%' })
 
           // 重复选项
-          Row() {
-            Text('重复')
-              .fontSize(14)
-              .fontColor('#999999')
+          Column() {
+            Row() {
+              Text('重复')
+                .fontSize(14)
+                .fontColor('#999999')
 
-            Blank()
+              Blank()
 
-            Text(this.selectedDays.join('、'))
-              .fontSize(14)
-              .fontColor('#5B9EFF')
-              .maxLines(1)
-              .textOverflow({ overflow: TextOverflow.Ellipsis })
-              .layoutWeight(1)
-              .textAlign(TextAlign.End)
-              .margin({ right: 5 })
+              Text(this.getSelectedDaysString())
+                .fontSize(14)
+                .fontColor('#5B9EFF')
+                .maxLines(1)
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+            }
+            .width('90%')
+            .padding({ top: 20, bottom: 10 })
+            .margin({ left: '5%' })
 
-            Image($r('sys.symbol.chevron_right'))
-              .width(16)
-              .height(16)
-              .fillColor('#CCCCCC')
+            // 星期选择器
+            Row() {
+              ForEach(this.dayNames, (day: string, index: number) => {
+                Text(day)
+                  .fontSize(14)
+                  .fontColor(this.selectedDays[index] ? '#FFFFFF' : '#666666')
+                  .width(40)
+                  .height(40)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(20)
+                  .backgroundColor(this.selectedDays[index] ? '#5B9EFF' : '#F0F0F0')
+                  .onClick(() => {
+                    this.selectedDays[index] = !this.selectedDays[index];
+                  })
+              }, (day: string) => day)
+            }
+            .width('90%')
+            .margin({ left: '5%', bottom: 20 })
+            .justifyContent(FlexAlign.SpaceBetween)
           }
-          .width('90%')
-          .padding({ top: 20, bottom: 20 })
-          .margin({ left: '5%' })
-          .onClick(() => {
-            // 打开重复设置页面
-            console.info('打开重复设置');
-          })
+          .width('100%')
 
           // 分隔线
           Divider()
@@ -171,4 +232,3 @@ struct AddAlarm {
     .backgroundColor('#F5F5F5')
   }
 }
-

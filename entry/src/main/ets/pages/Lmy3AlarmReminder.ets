@@ -1,20 +1,81 @@
 import router from '@ohos.router'
+import http from '@ohos.net.http';
 
 interface AlarmItem {
-  id: number;
+  objectId?: string;
   time: string;
   days: string;
   enabled: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+interface AlarmResponse {
+  results: AlarmItem[];
 }
 
 @Entry
 @Component
 struct AlarmReminder {
-  @State alarmList: AlarmItem[] = [
-    { id: 1, time: '7:00', days: '周一  周二  周三  周四', enabled: true },
-    { id: 2, time: '15:00', days: '周一  周二  周三  周四', enabled: true },
-    { id: 3, time: '21:00', days: '周一  周二  周三  周四', enabled: true }
-  ];
+  @State alarmList: AlarmItem[] = [];
+
+  aboutToAppear() {
+    this.fetchAlarmData();
+  }
+
+  // 获取闹钟数据
+  async fetchAlarmData() {
+    let httpRequest = http.createHttp();
+    try {
+      let response = await httpRequest.request(
+        'https://api.leancloud.cn/1.1/classes/alarm',
+        {
+          method: http.RequestMethod.GET,
+          header: {
+            'X-LC-Id': 'Lk7Ea17CoVWpjbDiMn2Ajc0t-gzGzoHsz',
+            'X-LC-Key': 'CzmXtXqi8Zf3pSLFPPaUGqd0',
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      if (response.responseCode === 200) {
+        const data: AlarmResponse = JSON.parse(response.result.toString());
+        this.alarmList = data.results || [];
+      }
+    } catch (err) {
+      console.error('获取闹钟数据失败:', err);
+    } finally {
+      httpRequest.destroy();
+    }
+  }
+
+  // 更新闹钟状态
+  async updateAlarmStatus(objectId: string, enabled: boolean) {
+    let httpRequest = http.createHttp();
+    try {
+      let response = await httpRequest.request(
+        `https://api.leancloud.cn/1.1/classes/alarm/${objectId}`,
+        {
+          method: http.RequestMethod.PUT,
+          header: {
+            'X-LC-Id': 'Lk7Ea17CoVWpjbDiMn2Ajc0t-gzGzoHsz',
+            'X-LC-Key': 'VDfOAfC5exDYv5PUJWJTBKzS,master',
+            'Content-Type': 'application/json'
+          },
+          extraData: JSON.stringify({ enabled: enabled })
+        }
+      );
+
+      if (response.responseCode !== 200) {
+        console.error('更新闹钟状态失败:', response.result.toString());
+      }
+    } catch (err) {
+      console.error('更新闹钟状态异常:', JSON.stringify(err));
+    } finally {
+      httpRequest.destroy();
+    }
+  }
 
   build() {
     Column() {
@@ -99,7 +160,28 @@ struct AlarmReminder {
                     .width(48)
                     .height(28)
                     .onChange((isOn: boolean) => {
-                      alarm.enabled = isOn;
+                      // 更新本地状态
+                      const updatedList: AlarmItem[] = [];
+                      this.alarmList.forEach(item => {
+                        if (item.objectId === alarm.objectId) {
+                          updatedList.push({
+                            objectId: item.objectId,
+                            time: item.time,
+                            days: item.days,
+                            enabled: isOn,
+                            createdAt: item.createdAt,
+                            updatedAt: item.updatedAt
+                          });
+                        } else {
+                          updatedList.push(item);
+                        }
+                      });
+                      this.alarmList = updatedList;
+                      
+                      // 同步更新到 LeanCloud
+                      if (alarm.objectId) {
+                        this.updateAlarmStatus(alarm.objectId, isOn);
+                      }
                     })
                 }
                 .width('100%')
@@ -116,7 +198,7 @@ struct AlarmReminder {
               .backgroundColor('#FFFFFF')
               .borderRadius(0)
               .margin({ bottom: index < this.alarmList.length - 1 ? 1 : 0 })
-            }, (alarm: AlarmItem) => alarm.id.toString())
+            }, (alarm: AlarmItem) => alarm.objectId ?? '')
           }
           .width('100%')
         }
