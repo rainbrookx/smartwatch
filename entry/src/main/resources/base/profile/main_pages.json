@@ -10,7 +10,8 @@
     "pages/Lmy2SleepStatistics",
     "pages/Lmy3AlarmReminder",
 
-    "pages/whw1",
+    "pages/Whw1HeartRatePage",
+    "pages/Whw2TodoPage",
     "pages/Whw3HelpPage",
     "pages/Whw4UserSelf",
 
