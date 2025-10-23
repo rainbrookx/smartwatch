@@ -8,6 +8,8 @@
     "pages/test1",
     "pages/test2",
     "pages/test3",
-    "pages/test4"
+    "pages/test4",
+    "pages/HelpPage",
+    "pages/UserSelf"
   ]
 }
