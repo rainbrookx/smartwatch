@@ -347,6 +347,9 @@ export default  struct HealthPage {
                 Text('+ 新增')
                   .fontSize(14)
                   .fontColor('#3B9DFF')
+                  .onClick(() => {
+                    this.getUIContext().getRouter().pushUrl({url: 'pages/Fyx3ScheduleReminderPage'})
+                  })
               }
               .width('100%')
               .margin({ bottom: 15 })

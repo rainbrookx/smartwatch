@@ -33,7 +33,7 @@ export default  struct IndexAnalyzeTab {
       Tabs({ barPosition: BarPosition.Start, index: this.currentIndex, controller: this.controller }) {
         TabContent() {
           StepStatisticsPage()
-        }.tabBar(this.tabBuilder(0, '记步'))
+        }.tabBar(this.tabBuilder(0, '计步'))
 
         TabContent() {
           SleepStatisticsPage()

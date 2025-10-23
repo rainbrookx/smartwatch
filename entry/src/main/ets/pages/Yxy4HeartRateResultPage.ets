@@ -104,7 +104,7 @@ struct HeartRateResultPage {
             .margin({ bottom: 20 })
             .objectFit(ImageFit.Contain)
 
-          Text('心率测试中…')
+          Text('心率结果')
             .fontSize(20)
             .fontColor('#333333')
             .fontWeight(FontWeight.Medium)
@@ -177,13 +177,8 @@ struct HeartRateResultPage {
           .margin({ bottom: 15 })
           .onClick(() => {
             console.info('确定按钮被点击')
-            // 清空路由栈并跳转到心率页面
-            router.clear()
-            router.pushUrl({
-              url: 'pages/Whw1HeartRatePage'
-            }).catch((err: Error) => {
-              console.error('跳转到心率页面失败：', JSON.stringify(err))
-            })
+            this.getUIContext().getRouter().back()
+            this.getUIContext().getRouter().back()
           })
 
         Button('重新测试')
